@@ -1,6 +1,6 @@
 const options: PIXI.RendererOptions = {
-    width: 1200,
-    height: 900,
+    width: 1080,
+    height: 600,
     antialias: true, 
     transparent: false, 
     resolution: 1, 
