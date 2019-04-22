@@ -8,6 +8,7 @@ export default class BalkSprite extends PIXI.Sprite {
   private _vx: number = gameOptions.BALK_SPEED;
   public app: PIXI.Application;
   public balkMask: PIXI.Graphics;
+  public randomHeight: number;
     
   constructor(app: PIXI.Application, texture: PIXI.Texture) {
     super(texture);
@@ -38,12 +39,12 @@ export default class BalkSprite extends PIXI.Sprite {
   private createRandomMask() {
     if (this.balkMask) this.removeChild(this.balkMask);
 
-    let randomHeight = Math.floor(Math.random() * (this.app.view.height - gameOptions.BALK_GAP));
+    this.randomHeight = Math.floor(Math.random() * (this.app.view.height - gameOptions.BALK_GAP));
 
     this.balkMask = new Graphics();
     this.balkMask.beginFill(0x1);
-    this.balkMask.drawRect(0, 0, gameOptions.BALK_WIDTH, randomHeight);
-    this.balkMask.drawRect(0, randomHeight + gameOptions.BALK_GAP, gameOptions.BALK_WIDTH, this.app.view.height - randomHeight - gameOptions.BALK_WIDTH);
+    this.balkMask.drawRect(0, 0, gameOptions.BALK_WIDTH, this.randomHeight);
+    this.balkMask.drawRect(0, this.randomHeight + gameOptions.BALK_GAP, gameOptions.BALK_WIDTH, this.app.view.height - this.randomHeight - gameOptions.BALK_WIDTH);
     this.balkMask.endFill();
     this.mask = this.balkMask;
     this.addChild(this.balkMask);

@@ -1,8 +1,9 @@
 import * as PIXI from 'pixi.js';
-import { options } from '../config/view.config';
 import PlayerGraphics from './gameobjects/player/playerGraphics';
 import PlayerSprite from './gameobjects/player/playerSprite';
 import Balks from './gameobjects/balks/balks';
+import HitDetection from './helpers/HitDetection';
+import { options } from '../config/view.config';
 import { gameOptions } from '../config/game.config';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -20,6 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const balks = new Balks(app, 4);
     balks.balks.forEach(balk => app.stage.addChild(balk));
+
+    app.ticker.add(delta => {
+        if (HitDetection.hitTheGap(player, balks.balks) === false) {
+            app.ticker.stop();
+        }
+    });
 
     document.addEventListener('keydown', (event) => {
         if (event.keyCode === 37 || event.keyCode === 65) {
