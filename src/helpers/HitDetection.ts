@@ -23,4 +23,17 @@ export default class HitDetection {
             }
         }
     }
+
+    public static hitBorders(subject: PIXI.DisplayObject, sizes: {width: number, height: number}): boolean {
+        const subjectBounds = subject.getBounds();
+
+        if (
+            subjectBounds.x <= 0 ||
+            subjectBounds.x + subjectBounds.width >= sizes.width ||
+            subjectBounds.y <= 0 ||
+            subjectBounds.y + subjectBounds.height >= sizes.height
+            ) return true;
+
+        return false;
+    }
 }
