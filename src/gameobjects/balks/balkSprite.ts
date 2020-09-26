@@ -15,9 +15,7 @@ export default class BalkSprite extends PIXI.Sprite {
 
     this.app = app;
     this.ticker = app.ticker;
-
     this.createRandomMask();
-    
   }
 
   get vy(): number {
@@ -44,7 +42,7 @@ export default class BalkSprite extends PIXI.Sprite {
     this.balkMask = new Graphics();
     this.balkMask.beginFill(0x1);
     this.balkMask.drawRect(0, 0, gameOptions.BALK_WIDTH, this.randomHeight);
-    this.balkMask.drawRect(0, this.randomHeight + gameOptions.BALK_GAP, gameOptions.BALK_WIDTH, this.app.view.height - this.randomHeight - gameOptions.BALK_WIDTH);
+    this.balkMask.drawRect(0, this.randomHeight + gameOptions.BALK_GAP, gameOptions.BALK_WIDTH, gameOptions.BALK_GAP);
     this.balkMask.endFill();
     this.mask = this.balkMask;
     this.addChild(this.balkMask);

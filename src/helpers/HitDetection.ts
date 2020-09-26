@@ -3,7 +3,7 @@ import { gameOptions } from "../../config/game.config";
 
 export default class HitDetection {
 
-    public static hitTheGap(subject: PIXI.DisplayObject, collisions: BalkSprite[]): boolean | undefined {
+    public static hitTheGap(subject: PIXI.DisplayObject, collisions: BalkSprite[]): boolean {
         const subjectBounds = subject.getBounds();
         const collisionsBounds = collisions.map(collision => collision.getBounds());
         

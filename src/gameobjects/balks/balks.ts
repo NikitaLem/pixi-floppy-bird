@@ -38,15 +38,16 @@ export default class Balks extends PIXI.Container {
 
   private setPosition() {
     this.balks.forEach((balk, index) => {
-      balk.x = (index + 1) * this.app.view.width / 4;
+      balk.x = (index + 1) * this.app.view.width / this.amount;
     });
 
     return this;
   }
 
   private createBalks() {
+    const balkGraphics = new BalkGraphics(gameOptions.BALK_WIDTH, this.app.view.height, 0x222222);
+
     for (let i = 0; i < this.amount; i++) {
-      const balkGraphics = new BalkGraphics(gameOptions.BALK_WIDTH, this.app.view.height, 0x222222);
       this.balks.push(new BalkSprite(this.app, this.app.renderer.generateTexture(balkGraphics)));
     }
 

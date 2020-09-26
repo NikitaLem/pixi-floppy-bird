@@ -4,9 +4,10 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "compile": "tsc -t es6 src/main.ts"
   },
-  "author": "Maxime Veber <maxime.veber@nekland.fr>",
+  "author": "Nikita Lem",
   "devDependencies": {
     "@types/pixi.js": "^4.5.4",
     "clean-webpack-plugin": "^0.1.16",

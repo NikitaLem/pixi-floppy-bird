@@ -1,58 +1,48 @@
 export default class WinController {
-    private _currentWin: number;
-    private _maxWin: number;
-    private _readyForWin: boolean;
-    
     constructor() {
         this._currentWin = 0;
         this._readyForWin = false;
         this._maxWin = this.getMaxWin();
     }
-
-    get currentWin(): number {
+    get currentWin() {
         return this._currentWin;
     }
-
-    set currentWin(val: number) {
+    set currentWin(val) {
         this._currentWin = val;
     }
-
-    get maxWin(): number {
+    get maxWin() {
         return this._maxWin;
     }
-
-    set maxWin(val: number) {
+    set maxWin(val) {
         this._maxWin = val;
     }
-
-    get readyForWin(): boolean {
+    get readyForWin() {
         return this._readyForWin;
     }
-
-    set readyForWin(val: boolean) {
+    set readyForWin(val) {
         this._readyForWin = val;
     }
-
-    private getMaxWin(): number {
+    getMaxWin() {
         try {
             return Number.parseInt(localStorage.getItem('maxwin')) || 0;
-        } catch (error) {
+        }
+        catch (error) {
             console.error(`Error: ${error}`);
         }
     }
-
-    public increment() {
+    increment() {
         if (this.readyForWin) {
             this.currentWin++;
             this.readyForWin = false;
         }
     }
-
-    public saveWin() {
+    saveWin() {
         try {
             this.maxWin = this.getMaxWin();
-            if (this.currentWin > this.maxWin) localStorage.setItem('maxwin', this.currentWin.toString());
-        } catch (error) {
+            if (this.currentWin > this.maxWin)
+                localStorage.setItem('maxwin', this.currentWin.toString());
+        }
+        catch (error) {
             console.error(`Error: ${error}`);
         }
     }
